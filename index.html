@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -19,10 +18,6 @@
       margin: 0 auto;
       background-color: #000;
       padding: 10px 0;
-    }
-    .banner-ad-top iframe {
-      display: block;
-      margin: 0 auto;
     }
     .logo {
       width: 120px;
@@ -46,20 +41,29 @@
     .task {
       margin: 10px auto;
       padding: 15px 20px;
-      background-color: #00796b;
-      color: white;
       border: none;
       border-radius: 8px;
       font-size: 18px;
       width: 80%;
       max-width: 300px;
-      cursor: pointer;
-      transition: background-color 0.3s;
       display: block;
+      transition: background-color 0.3s;
+      color: white;
+      cursor: pointer;
     }
-    .task:hover {
-      background-color: #004d40;
+    .task.incomplete {
+      background-color: #9e9e9e;
     }
+    .task.inProgress {
+      background-color: #ff9800;
+    }
+    .task.complete {
+      background-color: #4CAF50;
+    }
+    .task:hover:not(.complete):not(.inProgress) {
+      background-color: #757575;
+    }
+
     #mainLink {
       margin-top: 20px;
       padding: 15px;
@@ -94,18 +98,8 @@
 </head>
 <body>
 
-  <!-- ✅ 728x90 Banner Ad Top -->
   <div class="banner-ad-top">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : 'a6354b178492c67e634e9675a66c1c86',
-        'format' : 'iframe',
-        'height' : 90,
-        'width' : 728,
-        'params' : {}
-      };
-      document.write('<scr' + 'ipt type="text/javascript" src="//www.highcpmcreativeformat.com/a6354b178492c67e634e9675a66c1c86/invoke.js"></scr' + 'ipt>');
-    </script>
+    <!-- Your banner ad script here -->
   </div>
 
   <div class="logo"></div>
@@ -119,17 +113,16 @@
     </div>
   </div>
 
-  <button class="task" id="task1" onclick="startTask(1)">১ম টাস্ক</button>
-  <button class="task" id="task2" onclick="startTask(2)">২য় টাস্ক</button>
-  <button class="task" id="task3" onclick="startTask(3)">৩য় টাস্ক</button>
+  <button class="task incomplete" id="task1" onclick="startTask(1)">১ম টাস্ক</button>
+  <button class="task incomplete" id="task2" onclick="startTask(2)">২য় টাস্ক</button>
+  <button class="task incomplete" id="task3" onclick="startTask(3)">৩য় টাস্ক</button>
 
   <div id="mainLink">
     <button id="continueBtn" disabled onclick="window.location.href='https://your-main-link.com'">চালিয়ে যাও</button>
   </div>
 
   <div class="native-ad">
-    <script async="async" data-cfasync="false" src="//pl26854891.profitableratecpm.com/d60870a4d8ff87daf30051753c835aa4/invoke.js"></script>
-    <div id="container-d60870a4d8ff87daf30051753c835aa4"></div>
+    <!-- Your ad script here -->
   </div>
 
   <script>
@@ -146,12 +139,21 @@
       if (taskClicked[taskNumber]) return;
       taskClicked[taskNumber] = true;
 
+      const button = document.getElementById('task' + taskNumber);
+      button.classList.remove('incomplete');
+      button.classList.add('inProgress');
+      button.innerText = taskNumber + 'ম টাস্ক (চলমান...)';
+
       const win = window.open(taskLinks[taskNumber], '_blank');
 
       setTimeout(() => {
         completedTasks++;
-        document.getElementById('task' + taskNumber).innerText = taskNumber + 'ম টাস্ক (কমপ্লিট)';
+        button.innerText = taskNumber + 'ম টাস্ক (কমপ্লিট)';
+        button.classList.remove('inProgress');
+        button.classList.add('complete');
+
         alert('টাস্ক ' + taskNumber + ' সফলভাবে সম্পন্ন হয়েছে!');
+
         if (completedTasks >= 3) {
           document.getElementById('continueBtn').disabled = false;
         }
@@ -159,16 +161,5 @@
     }
   </script>
 
-<script>
-function markTaskComplete() {
-    const button = document.querySelector('button, .btn, .task-button');
-    if (button) {
-        button.style.backgroundColor = '#4CAF50'; // Green
-        button.innerText = "Task Completed";
-    }
-}
-// Simulate task completion after 5s
-setTimeout(markTaskComplete, 5000);
-</script>
 </body>
 </html>
