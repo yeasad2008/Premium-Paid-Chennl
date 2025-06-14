@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Private Channel</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f2f2f2;
+      color: #333;
+      text-align: center;
+    }
+    .banner-ad-top {
+      width: 100%;
+      max-width: 728px;
+      margin: 0 auto;
+      background-color: #000;
+      padding: 10px 0;
+    }
+    .banner-ad-top iframe {
+      display: block;
+      margin: 0 auto;
+    }
+    .logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 10px auto;
+      background: url('logo.png') no-repeat center/cover;
+      border: 3px solid #00695c;
+    }
+    .bio {
+      font-size: 16px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .warning-text {
+      color: red;
+      font-size: 15px;
+      padding: 10px;
+      margin-bottom: 15px;
+    }
+    .task {
+      margin: 10px auto;
+      padding: 15px 20px;
+      background-color: #00796b;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      width: 80%;
+      max-width: 300px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      display: block;
+    }
+    .task:hover {
+      background-color: #004d40;
+    }
+    #mainLink {
+      margin-top: 20px;
+      padding: 15px;
+    }
+    #continueBtn {
+      background-color: #00796b;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      animation: pulse 1.2s infinite;
+    }
+    #continueBtn:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+      animation: none;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .native-ad {
+      width: 100%;
+      margin-top: 30px;
+      background: #e0f2f1;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ 728x90 Banner Ad Top -->
+  <div class="banner-ad-top">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : 'a6354b178492c67e634e9675a66c1c86',
+        'format' : 'iframe',
+        'height' : 90,
+        'width' : 728,
+        'params' : {}
+      };
+      document.write('<scr' + 'ipt type="text/javascript" src="//www.highcpmcreativeformat.com/a6354b178492c67e634e9675a66c1c86/invoke.js"></scr' + 'ipt>');
+    </script>
+  </div>
+
+  <div class="logo"></div>
+
+  <div class="bio">
+    <h2 style="animation: pulse 1.5s infinite;">প্রাইভেট চ্যানেল 🔒</h2>
+    এখানে আপনার প্রোফাইল বা চ্যানেলের সংক্ষিপ্ত বিবরণ থাকবে।
+    <div class="warning-text">
+      প্রতিটি লিংকে ক্লিক করার পর অন্তত ৫ সেকেন্ড অপেক্ষা করুন।<br>
+      ৫ সেকেন্ডের আগে ফিরে এলে টাস্ক সম্পন্ন হবে না।
+    </div>
+  </div>
+
+  <button class="task" id="task1" onclick="startTask(1)">১ম টাস্ক</button>
+  <button class="task" id="task2" onclick="startTask(2)">২য় টাস্ক</button>
+  <button class="task" id="task3" onclick="startTask(3)">৩য় টাস্ক</button>
+
+  <div id="mainLink">
+    <button id="continueBtn" disabled onclick="window.location.href='https://your-main-link.com'">চালিয়ে যাও</button>
+  </div>
+
+  <div class="native-ad">
+    <script async="async" data-cfasync="false" src="//pl26854891.profitableratecpm.com/d60870a4d8ff87daf30051753c835aa4/invoke.js"></script>
+    <div id="container-d60870a4d8ff87daf30051753c835aa4"></div>
+  </div>
+
+  <script>
+    let completedTasks = 0;
+    let taskClicked = {};
+
+    const taskLinks = {
+      1: 'https://www.profitableratecpm.com/gzruqzy61?key=462d5862ca5803ff5a602f2d4892bbe6',
+      2: 'https://otieu.com/4/9388402',
+      3: 'https://www.profitableratecpm.com/ixfx8x5x?key=9714522be24485cc734736bcc3683eb2'
+    };
+
+    function startTask(taskNumber) {
+      if (taskClicked[taskNumber]) return;
+      taskClicked[taskNumber] = true;
+
+      const win = window.open(taskLinks[taskNumber], '_blank');
+
+      setTimeout(() => {
+        completedTasks++;
+        document.getElementById('task' + taskNumber).innerText = taskNumber + 'ম টাস্ক (কমপ্লিট)';
+        alert('টাস্ক ' + taskNumber + ' সফলভাবে সম্পন্ন হয়েছে!');
+        if (completedTasks >= 3) {
+          document.getElementById('continueBtn').disabled = false;
+        }
+      }, 5000);
+    }
+  </script>
+
+<script>
+function markTaskComplete() {
+    const button = document.querySelector('button, .btn, .task-button');
+    if (button) {
+        button.style.backgroundColor = '#4CAF50'; // Green
+        button.innerText = "Task Completed";
+    }
+}
+// Simulate task completion after 5s
+setTimeout(markTaskComplete, 5000);
+</script>
+</body>
+</html>
